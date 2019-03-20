@@ -1,25 +1,25 @@
 # code here!
-class School 
-  attr_reader :name, :roster 
+class School
+  attr_accessor :name, :roster
   
   def initialize(name)
-    @name = name 
+    @name = name
     @roster = {}
   end
-
-  def add_student(student, grade)
-    @roster[grade] = [] unless @roster.has_key?(grade)
-    @roster[grade] << student 
+  
+  def add_student(name, grade)
+    roster[grade] ||= []
+    roster[grade] << name
   end
   
-  def grade(num)
-    @roster[num]
+  def grade(grade)
+    roster[grade]
   end
   
   def sort
-    @roster.map do |key, value|
-      @roster[key] = value.sort 
+    roster.map do |key, value|
+      roster[key] = value.sort
     end
-    @roster
+    roster
   end
 end
